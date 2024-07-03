@@ -8,18 +8,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CRUD Create Product</title>
+    <title>CRUD Edit Product</title>
 </head>
 
 <body>
     <div class="shadow-lg p-10 w-1/4 m-auto mt-32">
-        <div class="font-semibold text-lg">CREATE PRODUCT</div>
-        <form method="post" action="{{ route('product.store') }}" class="pt-5">
+        <div class="font-semibold text-lg">EDIT PRODUCT</div>
+        <form method="post" action="{{ route('product.saveUpdate', ['product' => $product]) }}" class="pt-5">
             @csrf
-            @method('post')
+            @method('put')
             <div class="mb-3">
                 <div class="text-sm">Product Name</div>
-                <input required id="name" name="name" type="text" value="{{ old('name') }}"
+                <input required id="name" name="name" type="text" value="{{ old('name') ?? $product->name }}"
                     class="border focus:outline-none px-3 py-2 w-full text-sm focus:ring-1 focus:ring-sky-300 shadow-sm rounded"
                     placeholder="e.g. Apple">
                 @error('name')
@@ -28,25 +28,25 @@
             </div>
             <div class="mb-3">
                 <div class="text-sm">Quantity</div>
-                <input required name="qty" type="text" value="{{ old('qty') }}"
+                <input required name="qty" type="text" value="{{ old('qty') ?? $product->qty }}"
                     class="border focus:outline-none px-3 py-2 w-full text-sm focus:ring-1 focus:ring-sky-300 shadow-sm rounded"
                     placeholder="Qty">
                 @error('qty')
-                <div class="text-red-500 text-xs">{{ $message }}</div>
+                    <div class="text-red-500 text-xs">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
                 <div class="text-sm">Price</div>
-                <input required name="price" type="text" value="{{ old('price') }}"
+                <input required name="price" type="text" value="{{ old('price') ?? $product->price }}"
                     class="border focus:outline-none px-3 py-2 w-full text-sm focus:ring-1 focus:ring-sky-300 shadow-sm rounded"
                     placeholder="0.00">
                 @error('price')
-                <div class="text-red-500 text-xs">{{ $message }}</div>
+                    <div class="text-red-500 text-xs">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
                 <div class="text-sm">Description</div>
-                <input name="description" type="text" value="{{ old('description') }}"
+                <input name="description" type="text" value="{{ old('description') ?? $product->description }}"
                     class="border focus:outline-none px-3 py-2 w-full text-sm focus:ring-1 focus:ring-sky-300 shadow-sm rounded"
                     placeholder="Write here . . .">
                 @error('description')
@@ -63,8 +63,6 @@
         </form>
     </div>
 </body>
-<script>
-    
-</script>
+<script></script>
 
 </html>

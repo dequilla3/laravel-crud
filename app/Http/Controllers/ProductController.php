@@ -9,7 +9,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('products.index');
+        $products = Product::all();
+        return view('products.index', ['products' => $products]);
     }
 
     public function create()
@@ -21,12 +22,36 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'price' => 'required|numeric',
-            'qty' => 'required|numeric', // Use 'numeric' for numeric fields
+            'qty' => 'required|numeric',
+            'price' => 'required|decimal:0,2',
             'description' => 'nullable',
         ]);
 
-        $newProduct = Product::create($data);
-        return redirect()->route('product.index');
+        Product::create($data);
+        return redirect()->route('product.index')->with('message', 'Successfully created new Product!');
+    }
+
+    public function edit(Product $product)
+    {
+        return view('products.edit', ['product' => $product]);
+    }
+
+    public function saveUpdate(Product $product, Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'qty' => 'required|numeric',
+            'price' => 'required|decimal:0,2',
+            'description' => 'nullable',
+        ]);
+        $product->update($data);
+
+        return redirect()->route('product.index')->with('message', 'Successfully updated Product!');
+    }
+
+    public function delete(Product $product)
+    {
+        $product->delete($product);
+        return redirect()->route('product.index')->with('message', 'Successfully deleted Product!');
     }
 }
