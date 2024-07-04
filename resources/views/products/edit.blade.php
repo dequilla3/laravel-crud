@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CRUD Edit Product</title>
-</head>
-
-<body>
+@extends('layout.layout')
+@section('content')
     <div class="shadow-lg p-10 w-1/4 m-auto mt-32">
         <div class="font-semibold text-lg">EDIT PRODUCT</div>
         <form method="post" action="{{ route('product.saveUpdate', ['product' => $product]) }}" class="pt-5">
@@ -62,7 +53,6 @@
             </div>
         </form>
     </div>
-</body>
-<script></script>
+@endsection
 
 </html>

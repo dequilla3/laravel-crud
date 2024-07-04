@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CRUD Create Product</title>
-</head>
-
-<body>
+@extends('layout.layout')
+@section('content')
     <div class="shadow-lg p-10 w-1/4 m-auto mt-32">
         <div class="font-semibold text-lg">CREATE PRODUCT</div>
         <form method="post" action="{{ route('product.store') }}" class="pt-5">
@@ -32,7 +22,7 @@
                     class="border focus:outline-none px-3 py-2 w-full text-sm focus:ring-1 focus:ring-sky-300 shadow-sm rounded"
                     placeholder="Qty">
                 @error('qty')
-                <div class="text-red-500 text-xs">{{ $message }}</div>
+                    <div class="text-red-500 text-xs">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
@@ -41,7 +31,7 @@
                     class="border focus:outline-none px-3 py-2 w-full text-sm focus:ring-1 focus:ring-sky-300 shadow-sm rounded"
                     placeholder="0.00">
                 @error('price')
-                <div class="text-red-500 text-xs">{{ $message }}</div>
+                    <div class="text-red-500 text-xs">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
@@ -62,9 +52,6 @@
             </div>
         </form>
     </div>
-</body>
-<script>
-    
-</script>
+@endsection
 
 </html>

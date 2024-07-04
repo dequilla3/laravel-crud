@@ -9,9 +9,9 @@
 
         <div class="m-auto w-1/2 p-10 mt-24 shadow-lg">
             <div class="flex justify-between mb-5">
-                <div class="text-lg font-semibold">PRODUCTS</div>
+                <div class="text-lg font-semibold">USERS</div>
                 <a class="border px-4 py-2 text-sm rounded bg-sky-500 text-neutral-50 hover:bg-sky-400"
-                    href="{{ route('product.create') }}">Create new Product</a>
+                    href="{{ route('user.create') }}">Create new User</a>
             </div>
             <div>
                 <table class="w-full">
@@ -20,25 +20,22 @@
                             $thClasses = 'font-semibold text-sm py-2 text-left bg-sky-100 p-5 py-3 mb-2';
                             $tdClasses = 'border-b-2 text-xs py-3 px-5';
                         @endphp
-                        <th class="{{ $thClasses }}">Product</th>
-                        <th class="{{ $thClasses }}">Qty</th>
-                        <th class="{{ $thClasses }}">Price</th>
-                        <th class="{{ $thClasses }}">Description</th>
+                        <th class="{{ $thClasses }}">Name</th>
+                        <th class="{{ $thClasses }}">Email</th>
+                        <th class="{{ $thClasses }}">Date Created</th>
                         <th class="{{ $thClasses }}">Actions</th>
                     </tr>
-                    @foreach ($products as $prod)
+                    @foreach ($users as $user)
                         <tr class="hover:bg-sky-50 cursor-pointer">
-                            <td class="{{ $tdClasses }}">{{ $prod->name }}</td>
-                            <td class="{{ $tdClasses }}">{{ $prod->qty }}</td>
-                            <td class="{{ $tdClasses }}">{{ $prod->price }}</td>
-                            <td class="{{ $tdClasses }}">{{ $prod->description }}</td>
+                            <td class="{{ $tdClasses }}">{{ $user->name }}</td>
+                            <td class="{{ $tdClasses }}">{{ $user->email }}</td>
+                            <td class="{{ $tdClasses }}">{{ $user->created_at }}</td>
                             <td class="{{ $tdClasses }}">
                                 <a class="px-4 py-1 text-xs rounded-sm text-neutral-50 mr-1 bg-slate-500 hover:bg-slate-600"
-                                    href="{{ route('product.edit', ['product' => $prod]) }}">Edit</a>
+                                    {{-- TODO --}} {{-- href="{{ route('user.edit', ['user' => $user]) }}" --}}>Edit</a>
                                 <a onclick="confirmSweetAlert(event)"
                                     class="px-4 py-1 text-xs rounded-sm text-neutral-50 bg-red-400 hover:bg-red-500"
-                                    href="{{ route('product.delete', ['product' => $prod]) }}">Delete</a>
-
+                                    {{-- TODO --}} {{-- href="{{ route('user.delete', ['user' => $user]) }}" --}}>Delete</a>
                             </td>
                         </tr>
                     @endforeach
