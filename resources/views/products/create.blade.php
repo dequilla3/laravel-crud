@@ -2,7 +2,7 @@
 <html lang="en">
 @extends('layout.layout')
 @section('content')
-    <div class="shadow-lg p-10 w-1/4 m-auto mt-32">
+    <div class="shadow-lg p-10 w-1/4 m-auto mt-10">
         <div class="font-semibold text-lg">CREATE PRODUCT</div>
         <form method="post" action="{{ route('product.store') }}" class="pt-5">
             @csrf
