@@ -20,3 +20,6 @@ Route::get('/product/{product}/delete', [ProductController::class, 'delete'])->n
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 Route::post('/user', [UserController::class, 'store'])->name('user.store');
+Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/{user}/saveUpdate', [UserController::class, 'saveUpdate'])->name('user.saveUpdate');
+Route::get('/user/{user}/delete', [UserController::class, 'delete'])->name('user.delete');

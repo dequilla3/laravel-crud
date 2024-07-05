@@ -1,4 +1,5 @@
 import "./bootstrap";
+import "./loading";
 
 let fieldName = document.getElementById("name");
 if (fieldName) {
@@ -13,12 +14,3 @@ if (msgBoxBtn) {
         document.getElementById("msgBox").className = "hidden";
     });
 }
-
-let btnDeleteProduct = document.getElementsByName("btnDeleteProduct");
-btnDeleteProduct.forEach((element) => {
-    if (element) {
-        element.addEventListener("click", function () {
-            console.log(element);
-        });
-    }
-});

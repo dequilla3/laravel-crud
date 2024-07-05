@@ -45,14 +45,20 @@
                 @enderror
             </div>
             <div class="flex space-x-1">
-                <input type="submit" value="Save"
+
+                <input id="editProdSubmit" type="submit" value="Save"
                     class="bg-sky-500 px-4 py-2 rounded w-full text-neutral-50 cursor-pointer hover:shadow-lg hover:bg-sky-400">
+
                 <a class="bg-red-500 px-4 py-2 rounded w-full text-neutral-50 cursor-pointer hover:shadow-lg hover:bg-red-400 text-center"
                     href="{{ route('product.index') }}">Cancel</a>
-
             </div>
+
         </form>
     </div>
 @endsection
+
+<script type="text/javascript">
+
+</script>
 
 </html>

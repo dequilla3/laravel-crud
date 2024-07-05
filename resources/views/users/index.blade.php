@@ -3,14 +3,10 @@
 @extends('layout.layout')
 @section('content')
     <div>
-        @if (session('message'))
-            <x-msg-box />
-        @endif
-
         <div class="m-auto w-1/2 p-10 mt-24 shadow-lg">
             <div class="flex justify-between mb-5">
                 <div class="text-lg font-semibold">USERS</div>
-                <a class="border px-4 py-2 text-sm rounded bg-sky-500 text-neutral-50 hover:bg-sky-400"
+                <a id="create" class="border px-4 py-2 text-sm rounded bg-sky-500 text-neutral-50 hover:bg-sky-400"
                     href="{{ route('user.create') }}">Create new User</a>
             </div>
             <div>
@@ -31,11 +27,13 @@
                             <td class="{{ $tdClasses }}">{{ $user->email }}</td>
                             <td class="{{ $tdClasses }}">{{ $user->created_at }}</td>
                             <td class="{{ $tdClasses }}">
-                                <a class="px-4 py-1 text-xs rounded-sm text-neutral-50 mr-1 bg-slate-500 hover:bg-slate-600"
-                                    {{-- TODO --}} {{-- href="{{ route('user.edit', ['user' => $user]) }}" --}}>Edit</a>
-                                <a onclick="confirmSweetAlert(event)"
+                                <a id="edit"
+                                    class="px-4 py-1 text-xs rounded-sm text-neutral-50 mr-1 bg-slate-500 hover:bg-slate-600"
+                                    href="{{ route('user.edit', ['user' => $user]) }}">Edit</a>
+
+                                <a id="delete" onclick="confirmSweetAlert(event)"
                                     class="px-4 py-1 text-xs rounded-sm text-neutral-50 bg-red-400 hover:bg-red-500"
-                                    {{-- TODO --}} {{-- href="{{ route('user.delete', ['user' => $user]) }}" --}}>Delete</a>
+                                    href="{{ route('user.delete', ['user' => $user]) }}">Delete</a>
                             </td>
                         </tr>
                     @endforeach

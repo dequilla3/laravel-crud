@@ -3,14 +3,10 @@
 @extends('layout.layout')
 @section('content')
     <div>
-        @if (session('message'))
-            <x-msg-box />
-        @endif
-
         <div class="m-auto w-1/2 p-10 mt-24 shadow-lg">
             <div class="flex justify-between mb-5">
                 <div class="text-lg font-semibold">PRODUCTS</div>
-                <a class="border px-4 py-2 text-sm rounded bg-sky-500 text-neutral-50 hover:bg-sky-400"
+                <a id="create" class="border px-4 py-2 text-sm rounded bg-sky-500 text-neutral-50 hover:bg-sky-400"
                     href="{{ route('product.create') }}">Create new Product</a>
             </div>
             <div>
@@ -33,9 +29,10 @@
                             <td class="{{ $tdClasses }}">{{ $prod->price }}</td>
                             <td class="{{ $tdClasses }}">{{ $prod->description }}</td>
                             <td class="{{ $tdClasses }}">
-                                <a class="px-4 py-1 text-xs rounded-sm text-neutral-50 mr-1 bg-slate-500 hover:bg-slate-600"
+                                <a id="edit"
+                                    class="px-4 py-1 text-xs rounded-sm text-neutral-50 mr-1 bg-slate-500 hover:bg-slate-600"
                                     href="{{ route('product.edit', ['product' => $prod]) }}">Edit</a>
-                                <a onclick="confirmSweetAlert(event)"
+                                <a id="delete" onclick="confirmSweetAlert(event)"
                                     class="px-4 py-1 text-xs rounded-sm text-neutral-50 bg-red-400 hover:bg-red-500"
                                     href="{{ route('product.delete', ['product' => $prod]) }}">Delete</a>
 
