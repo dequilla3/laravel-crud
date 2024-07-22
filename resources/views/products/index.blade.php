@@ -35,7 +35,6 @@
                                 <a id="delete" onclick="confirmSweetAlert(event)"
                                     class="px-4 py-1 text-xs rounded-sm text-neutral-50 bg-red-400 hover:bg-red-500"
                                     href="{{ route('product.delete', ['product' => $prod]) }}">Delete</a>
-
                             </td>
                         </tr>
                     @endforeach
@@ -60,6 +59,7 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
+                document.getElementById("loadingModal").className = "block";
                 window.location.href = href;
             }
         });
